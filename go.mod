@@ -1,4 +1,4 @@
-module github.com/Qode-Platform/qode-chi-template-v1
+module github.com/Qode-Fleet-Control/qode-chi-template-v1
 
 go 1.23
 
