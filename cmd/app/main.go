@@ -22,6 +22,9 @@ func port() string {
 
 func newRouter() http.Handler {
 	r := chi.NewRouter()
+	// KEEP THIS: one log line per request (status + duration) is what the workspace Monitoring tab charts.
+	// requestLog (requestlog.go) is outermost, so it sees the final status.
+	r.Use(requestLog)
 	r.Use(middleware.Recoverer)
 	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, map[string]string{"status": "ok"})
